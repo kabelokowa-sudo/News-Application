@@ -15,18 +15,24 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 
 class PublisherSerializer(serializers.ModelSerializer):
+    """Serializes Publisher data (id and name) for the REST API."""
+
     class Meta:
         model = Publisher
         fields = ['id', 'name']
 
 
 class NewsletterSerializer(serializers.ModelSerializer):
+    """Serializes Newsletter data, including its collection of articles."""
+
     class Meta:
         model = Newsletter
         fields = ['id', 'title', 'description', 'author', 'articles', 'created_at']
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """Serializes basic CustomUser data (id, username, email, role)."""
+
     class Meta:
         model = CustomUser
         fields = ['id', 'username', 'email', 'role']
