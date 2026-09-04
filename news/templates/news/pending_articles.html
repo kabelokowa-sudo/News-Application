@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pending Articles</title>
+</head>
+<body>
+    <h1>Articles Awaiting Approval</h1>
+    {% if articles %}
+        <ul>
+        {% for article in articles %}
+            <li>
+                <strong>{{ article.title }}</strong> by {{ article.author.username }}
+                {% if article.publisher %}({{ article.publisher.name }}){% endif %}
+                <form method="post" action="{% url 'approve_article' article.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Approve</button>
+                </form>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No articles pending approval.</p>
+    {% endif %}
+</body>
+</html>
