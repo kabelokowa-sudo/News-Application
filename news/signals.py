@@ -7,10 +7,11 @@ from .models import CustomUser
 
 @receiver(post_save, sender=CustomUser)
 def sync_user_role(sender, instance, created, **kwargs):
-    """
-    This runs every time a user is saved (created or edited).
+    """Keeps a user's Group membership and role-specific fields in sync.
 
-    It does two things based on the user's role:
+    This runs every time a user is saved (created or edited). It does
+    two things based on the user's role:
+
     1. Puts them in the matching Group (Reader, Editor, or Journalist)
        so they get the right permissions.
     2. If they're a Journalist, clears their subscription fields,

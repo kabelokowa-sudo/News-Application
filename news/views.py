@@ -10,8 +10,8 @@ from .serializers import ArticleSerializer
 @login_required
 @permission_required('news.change_article', raise_exception=True)
 def pending_articles(request):
-    """
-    Shows editors a list of articles awaiting approval.
+    """Shows editors a list of articles awaiting approval.
+
     Requires the 'change_article' permission (Editor or Journalist group).
     """
     articles = Article.objects.filter(approved=False).order_by('-created_at')
@@ -21,8 +21,8 @@ def pending_articles(request):
 @login_required
 @permission_required('news.change_article', raise_exception=True)
 def approve_article(request, article_id):
-    """
-    Approves an article, then:
+    """Approves an article, then:
+
     1. Emails the approved article to subscribers of its author/publisher.
     2. Logs the approved article to our own /api/approved/ endpoint via POST,
        simulating sharing it externally.
