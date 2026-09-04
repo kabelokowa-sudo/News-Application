@@ -1,3 +1,10 @@
+"""URL routes for the news app.
+
+Combines the traditional Django views (editor pending/approve pages)
+with the DRF router for the article API. Included at the root path by
+:mod:`newsproject.urls`.
+"""
+
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
