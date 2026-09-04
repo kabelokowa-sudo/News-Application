@@ -1,0 +1,37 @@
+services:
+  db:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: newsapp_db
+      MYSQL_USER: newsapp
+      MYSQL_PASSWORD: please-change-this-password
+      MYSQL_ROOT_PASSWORD: please-change-this-root-password
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_SECRET_KEY: please-change-this-secret-key
+      DJANGO_DEBUG: "False"
+      DJANGO_ALLOWED_HOSTS: "*"
+      DATABASE_ENGINE: django.db.backends.mysql
+      DATABASE_HOST: db
+      DATABASE_PORT: "3306"
+      DATABASE_NAME: newsapp_db
+      DATABASE_USER: newsapp
+      DATABASE_PASSWORD: please-change-this-password
+
+volumes:
+  mariadb_data:
