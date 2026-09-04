@@ -32,6 +32,22 @@ A Django news platform built for the HyperionDev Capstone (M06T08). Readers can 
 
 A signal (`news/signals.py`) automatically assigns each user to the matching Group whenever their role is set or changed, and clears subscription fields if they become a Journalist.
 
+## Front-end pages
+
+The app also ships a minimal front end so an account can be created and used without touching Django admin:
+
+| URL | Purpose |
+|---|---|
+| `/register/` | Sign up and pick a role (Reader, Editor, Journalist). Saving the form logs you in immediately. |
+| `/login/` | Log in with an existing account. |
+| `/logout/` | Log out (POST only). |
+| `/` | Home page - shows your role and where to go next once logged in. |
+| `/editor/pending/` | Editors only: review and approve pending articles. |
+
+Registering just creates the `CustomUser` with the chosen role; the existing `sync_user_role` signal
+handles putting the account in the right Group (and therefore the right permissions), so there's no
+separate group-assignment step in the registration view itself.
+
 ## Setup (venv)
 
 ```bash
