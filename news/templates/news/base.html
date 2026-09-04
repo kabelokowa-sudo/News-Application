@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}News Application{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 640px; margin: 40px auto; color: #222; }
+        nav { margin-bottom: 24px; }
+        nav a { margin-right: 12px; }
+        .errorlist { color: #b00020; padding-left: 18px; }
+        form p { margin: 10px 0; }
+        label { display: block; font-weight: bold; margin-bottom: 4px; }
+        input, select { padding: 6px; width: 100%; box-sizing: border-box; }
+        button { padding: 8px 16px; margin-top: 10px; }
+        .messages { list-style: none; padding: 0; }
+        .messages li { padding: 8px; background: #eef; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        {% if user.is_authenticated %}
+            <span>Signed in as {{ user.username }} ({{ user.get_role_display }})</span>
+            {% if perms.news.change_article %}
+                <a href="{% url 'pending_articles' %}">Pending articles</a>
+            {% endif %}
+            <form action="{% url 'logout' %}" method="post" style="display:inline">
+                {% csrf_token %}
+                <button type="submit">Log out</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Log in</a>
+            <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </nav>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+        </ul>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+</body>
+</html>

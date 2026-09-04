@@ -1,0 +1,26 @@
+{% extends "news/base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1>Welcome, {{ user.username }}</h1>
+        <p>Your role is <strong>{{ user.get_role_display }}</strong>.</p>
+
+        {% if user.role == 'reader' %}
+            <p>As a Reader you can subscribe to publishers and journalists from the
+               admin site for now, and browse approved articles via the API at
+               <code>/api/approved/</code>.</p>
+        {% elif user.role == 'journalist' %}
+            <p>As a Journalist you can write articles and newsletters via the
+               API at <code>/api/articles/</code>, or through the admin site.</p>
+        {% elif user.role == 'editor' %}
+            <p>As an Editor you can review and approve articles awaiting
+               publication on the <a href="{% url 'pending_articles' %}">pending articles</a> page.</p>
+        {% endif %}
+
+        <p>You can also generate an API token at <code>/api/token/</code>
+           (POST your username and password) to use the REST endpoints directly.</p>
+    {% else %}
+        <h1>News Application</h1>
+        <p>Log in or register to get started.</p>
+    {% endif %}
+{% endblock %}
