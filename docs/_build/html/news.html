@@ -59,6 +59,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#news.apps.NewsConfig"><code class="docutils literal notranslate"><span class="pre">NewsConfig</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#module-news.forms">news.forms module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#news.forms.RegisterForm"><code class="docutils literal notranslate"><span class="pre">RegisterForm</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-news.models">news.models module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#news.models.Article"><code class="docutils literal notranslate"><span class="pre">Article</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#news.models.CustomUser"><code class="docutils literal notranslate"><span class="pre">CustomUser</span></code></a></li>
@@ -85,7 +89,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#module-news.urls">news.urls module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-news.views">news.views module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#news.views.approve_article"><code class="docutils literal notranslate"><span class="pre">approve_article()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#news.views.home"><code class="docutils literal notranslate"><span class="pre">home()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#news.views.pending_articles"><code class="docutils literal notranslate"><span class="pre">pending_articles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#news.views.register"><code class="docutils literal notranslate"><span class="pre">register()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-news">Module contents</a></li>
@@ -238,6 +244,62 @@ the whole flow inside this project.</p>
 <dt class="sig sig-object py" id="news.apps.NewsConfig.ready">
 <span class="sig-name descname"><span class="pre">ready</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/news/apps.html#NewsConfig.ready"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#news.apps.NewsConfig.ready" title="Link to this definition"></a></dt>
 <dd><p>Override this method in subclasses to run code when Django starts.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-news.forms">
+<span id="news-forms-module"></span><h2>news.forms module<a class="headerlink" href="#module-news.forms" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="news.forms.RegisterForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">news.forms.</span></span><span class="sig-name descname"><span class="pre">RegisterForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/news/forms.html#RegisterForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#news.forms.RegisterForm" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UserCreationForm</span></code></p>
+<p>Front-end sign-up form. Lets a new user pick their role
+(Reader, Editor, or Journalist) at registration time.</p>
+<p>Saving the resulting CustomUser triggers the <cite>sync_user_role</cite>
+signal (see signals.py), which automatically puts the user in
+the matching Group and grants the permissions that go with it -
+no extra group-assignment code is needed here.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="news.forms.RegisterForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/news/forms.html#RegisterForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#news.forms.RegisterForm.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Meta</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="news.forms.RegisterForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('username',</span> <span class="pre">'email',</span> <span class="pre">'role')</span></em><a class="headerlink" href="#news.forms.RegisterForm.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="news.forms.RegisterForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#news.forms.RegisterForm.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#news.models.CustomUser" title="news.models.CustomUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomUser</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="news.forms.RegisterForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'role':</span> <span class="pre">&lt;django.forms.fields.ChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'username':</span> <span class="pre">&lt;django.contrib.auth.forms.UsernameField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#news.forms.RegisterForm.base_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="news.forms.RegisterForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'role':</span> <span class="pre">&lt;django.forms.fields.ChoiceField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#news.forms.RegisterForm.declared_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="news.forms.RegisterForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#news.forms.RegisterForm.media" title="Link to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="news.forms.RegisterForm.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/news/forms.html#RegisterForm.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#news.forms.RegisterForm.save" title="Link to this definition"></a></dt>
+<dd><p>Save this form’s self.instance object if commit=True. Otherwise, add
+a save_m2m() method to the form which can be called after the instance
+is saved manually at a later time. Return the model instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1043,29 +1105,43 @@ mean deleting their articles, which we don’t want to do.</p>
 </section>
 <section id="module-news.urls">
 <span id="news-urls-module"></span><h2>news.urls module<a class="headerlink" href="#module-news.urls" title="Link to this heading"></a></h2>
-<p>URL routes for the news app.</p>
-<p>Combines the traditional Django views (editor pending/approve pages)
-with the DRF router for the article API. Included at the root path by
-<code class="xref py py-mod docutils literal notranslate"><span class="pre">newsproject.urls</span></code>.</p>
+<p>URL routes for the news app: front-end pages (home, register, login,
+logout, editor workflow) plus the DRF API endpoints.</p>
 </section>
 <section id="module-news.views">
 <span id="news-views-module"></span><h2>news.views module<a class="headerlink" href="#module-news.views" title="Link to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="news.views.approve_article">
 <span class="sig-prename descclassname"><span class="pre">news.views.</span></span><span class="sig-name descname"><span class="pre">approve_article</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">article_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/news/views.html#approve_article"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#news.views.approve_article" title="Link to this definition"></a></dt>
-<dd><p>Approves an article, then:</p>
-<ol class="arabic simple">
-<li><p>Emails the approved article to subscribers of its author/publisher.</p></li>
-<li><p>Logs the approved article to our own /api/approved/ endpoint via POST,
-simulating sharing it externally.</p></li>
-</ol>
+<dd><p>Approves an article, then:
+1. Emails the approved article to subscribers of its author/publisher.
+2. Logs the approved article to our own /api/approved/ endpoint via POST,</p>
+<blockquote>
+<div><p>simulating sharing it externally.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="news.views.home">
+<span class="sig-prename descclassname"><span class="pre">news.views.</span></span><span class="sig-name descname"><span class="pre">home</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/news/views.html#home"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#news.views.home" title="Link to this definition"></a></dt>
+<dd><p>Landing page. Shows role-specific info for logged-in users.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="news.views.pending_articles">
 <span class="sig-prename descclassname"><span class="pre">news.views.</span></span><span class="sig-name descname"><span class="pre">pending_articles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/news/views.html#pending_articles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#news.views.pending_articles" title="Link to this definition"></a></dt>
-<dd><p>Shows editors a list of articles awaiting approval.</p>
-<p>Requires the ‘change_article’ permission (Editor or Journalist group).</p>
+<dd><p>Shows editors a list of articles awaiting approval.
+Requires the ‘change_article’ permission (Editor or Journalist group).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="news.views.register">
+<span class="sig-prename descclassname"><span class="pre">news.views.</span></span><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/news/views.html#register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#news.views.register" title="Link to this definition"></a></dt>
+<dd><p>Front-end sign-up view. Lets a visitor create an account and pick
+a role (Reader, Editor, or Journalist). Saving the form creates the
+CustomUser, and the <cite>sync_user_role</cite> signal (signals.py) takes care
+of putting them in the matching Group so their permissions are set
+up immediately - no manual group-assignment needed here.</p>
 </dd></dl>
 
 </section>

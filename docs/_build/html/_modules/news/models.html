@@ -74,7 +74,7 @@
 
 
 <div class="viewcode-block" id="CustomUser">
-<a class="viewcode-back" href="../../news.html#news.models.CustomUser">[docs]</a>
+<a class="viewcode-back" href="../../news.html#news.forms.CustomUser">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CustomUser</span><span class="p">(</span><span class="n">AbstractUser</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Custom user model with a role field controlling which features</span>
@@ -87,7 +87,7 @@
 <span class="sd">    """</span>
 
 <div class="viewcode-block" id="CustomUser.Role">
-<a class="viewcode-back" href="../../news.html#news.models.CustomUser.Role">[docs]</a>
+<a class="viewcode-back" href="../../news.html#news.forms.CustomUser.Role">[docs]</a>
     <span class="k">class</span><span class="w"> </span><span class="nc">Role</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">TextChoices</span><span class="p">):</span>
         <span class="n">READER</span> <span class="o">=</span> <span class="s1">'reader'</span><span class="p">,</span> <span class="s1">'Reader'</span>
         <span class="n">EDITOR</span> <span class="o">=</span> <span class="s1">'editor'</span><span class="p">,</span> <span class="s1">'Editor'</span>
@@ -120,7 +120,7 @@
 
 
 <div class="viewcode-block" id="Publisher">
-<a class="viewcode-back" href="../../news.html#news.models.Publisher">[docs]</a>
+<a class="viewcode-back" href="../../news.html#news.forms.Publisher">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Publisher</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    A curated publication. A publisher has its own editors and</span>
@@ -146,7 +146,7 @@
 
 
 <div class="viewcode-block" id="Article">
-<a class="viewcode-back" href="../../news.html#news.models.Article">[docs]</a>
+<a class="viewcode-back" href="../../news.html#news.forms.Article">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Article</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    A news article written by a journalist. If `publisher` is set,</span>
@@ -180,7 +180,7 @@
 
 
 <div class="viewcode-block" id="Newsletter">
-<a class="viewcode-back" href="../../news.html#news.models.Newsletter">[docs]</a>
+<a class="viewcode-back" href="../../news.html#news.forms.Newsletter">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Newsletter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    A curated collection of articles, created by a journalist or</span>

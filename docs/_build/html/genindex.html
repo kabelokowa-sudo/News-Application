@@ -72,6 +72,7 @@
 
 <div class="genindex-jumpbox">
  <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
@@ -139,6 +140,14 @@
   </ul></td>
 </tr></table>
 
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="news.html#news.forms.RegisterForm.base_fields">base_fields (news.forms.RegisterForm attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -170,6 +179,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="news.html#news.models.CustomUser.date_joined">date_joined (news.models.CustomUser attribute)</a>
 </li>
+      <li><a href="news.html#news.forms.RegisterForm.declared_fields">declared_fields (news.forms.RegisterForm attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="news.html#news.apps.NewsConfig.default_auto_field">default_auto_field (news.apps.NewsConfig attribute)</a>
@@ -198,9 +209,11 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="news.html#news.serializers.ArticleSerializer.Meta.fields">fields (news.serializers.ArticleSerializer.Meta attribute)</a>
+      <li><a href="news.html#news.forms.RegisterForm.Meta.fields">fields (news.forms.RegisterForm.Meta attribute)</a>
 
       <ul>
+        <li><a href="news.html#news.serializers.ArticleSerializer.Meta.fields">(news.serializers.ArticleSerializer.Meta attribute)</a>
+</li>
         <li><a href="news.html#news.serializers.NewsletterSerializer.Meta.fields">(news.serializers.NewsletterSerializer.Meta attribute)</a>
 </li>
         <li><a href="news.html#news.serializers.PublisherSerializer.Meta.fields">(news.serializers.PublisherSerializer.Meta attribute)</a>
@@ -254,14 +267,16 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="news.html#news.permissions.IsEditorOrJournalist.has_object_permission">has_object_permission() (news.permissions.IsEditorOrJournalist method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="news.html#news.permissions.IsEditorOrJournalist.has_permission">has_permission() (news.permissions.IsEditorOrJournalist method)</a>
 
       <ul>
         <li><a href="news.html#news.permissions.IsJournalist.has_permission">(news.permissions.IsJournalist method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="news.html#news.views.home">home() (in module news.views)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -327,10 +342,16 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="news.html#news.admin.CustomUserAdmin.media">media (news.admin.CustomUserAdmin property)</a>
-</li>
-      <li><a href="news.html#news.serializers.ArticleSerializer.Meta.model">model (news.serializers.ArticleSerializer.Meta attribute)</a>
 
       <ul>
+        <li><a href="news.html#news.forms.RegisterForm.media">(news.forms.RegisterForm property)</a>
+</li>
+      </ul></li>
+      <li><a href="news.html#news.forms.RegisterForm.Meta.model">model (news.forms.RegisterForm.Meta attribute)</a>
+
+      <ul>
+        <li><a href="news.html#news.serializers.ArticleSerializer.Meta.model">(news.serializers.ArticleSerializer.Meta attribute)</a>
+</li>
         <li><a href="news.html#news.serializers.NewsletterSerializer.Meta.model">(news.serializers.NewsletterSerializer.Meta attribute)</a>
 </li>
         <li><a href="news.html#news.serializers.PublisherSerializer.Meta.model">(news.serializers.PublisherSerializer.Meta attribute)</a>
@@ -349,6 +370,8 @@
         <li><a href="news.html#module-news.api_views">news.api_views</a>
 </li>
         <li><a href="news.html#module-news.apps">news.apps</a>
+</li>
+        <li><a href="news.html#module-news.forms">news.forms</a>
 </li>
         <li><a href="news.html#module-news.models">news.models</a>
 </li>
@@ -404,6 +427,13 @@
 </li>
       </ul></li>
       <li>
+    news.forms
+
+      <ul>
+        <li><a href="news.html#module-news.forms">module</a>
+</li>
+      </ul></li>
+      <li>
     news.models
 
       <ul>
@@ -417,6 +447,8 @@
         <li><a href="news.html#module-news.permissions">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     news.serializers
 
@@ -424,8 +456,6 @@
         <li><a href="news.html#module-news.serializers">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     news.signals
 
@@ -515,9 +545,15 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="news.html#news.models.CustomUser.Role.READER">READER (news.models.CustomUser.Role attribute)</a>
 </li>
+      <li><a href="news.html#news.apps.NewsConfig.ready">ready() (news.apps.NewsConfig method)</a>
+</li>
+      <li><a href="news.html#news.views.register">register() (in module news.views)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="news.html#news.apps.NewsConfig.ready">ready() (news.apps.NewsConfig method)</a>
+      <li><a href="news.html#news.forms.RegisterForm">RegisterForm (class in news.forms)</a>
+</li>
+      <li><a href="news.html#news.forms.RegisterForm.Meta">RegisterForm.Meta (class in news.forms)</a>
 </li>
       <li><a href="news.html#news.models.CustomUser.role">role (news.models.CustomUser attribute)</a>
 </li>
@@ -527,6 +563,8 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="news.html#news.forms.RegisterForm.save">save() (news.forms.RegisterForm method)</a>
+</li>
       <li><a href="news.html#news.api_views.ArticleViewSet.serializer_class">serializer_class (news.api_views.ArticleViewSet attribute)</a>
 </li>
       <li><a href="news.html#news.api_views.ArticleViewSet.subscribed">subscribed() (news.api_views.ArticleViewSet method)</a>

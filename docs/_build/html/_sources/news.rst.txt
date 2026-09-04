@@ -28,6 +28,14 @@ news.apps module
    :undoc-members:
    :show-inheritance:
 
+news.forms module
+-----------------
+
+.. automodule:: news.forms
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 news.models module
 ------------------
 
